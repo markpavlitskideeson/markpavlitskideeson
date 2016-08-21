@@ -49,6 +49,15 @@ class ArticleWrapper extends EntityDrupalWrapper
       return FALSE;
     }
 
+    // Get the general availability date.
     $available = $this->field_available_date->value();
+    // Check if the general availability date has passed.
+    if ($available <= REQUEST_TIME) {
+      // The article is no longer for members only.
+      return FALSE;
+    }
+
+    // This content is reserved for members.
+    return TRUE;
   }
 }

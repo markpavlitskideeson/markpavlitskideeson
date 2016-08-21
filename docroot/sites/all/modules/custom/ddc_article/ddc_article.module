@@ -4,6 +4,8 @@
  * Code for the ddc_article feature.
  */
 
+use \Drupal\ddc_article\EntityWrapper\Node\ArticleWrapper;
+
 include_once 'ddc_article.features.inc';
 
 /**

@@ -33,7 +33,7 @@ function ddc_theme_preprocess_node__article(&$variables) {
     $variables['classes_array'][] = 'article-highlighted';
   }
 
-  $published = format_date($variables['node']->changed, 'date_only');
+  $published = format_date($variables['node']->created, 'date_only');
   $variables['content']['publication_date'] = array(
     '#type' => 'markup',
     '#markup' => $published,

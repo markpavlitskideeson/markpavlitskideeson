@@ -34,8 +34,10 @@ function ddc_article_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'settings' => array(
+          'trim_length' => 400,
+        ),
+        'type' => 'text_trimmed',
         'weight' => 4,
       ),
     ),
@@ -109,6 +111,55 @@ function ddc_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-field_highlight'.
+  $field_instances['node-article-field_highlight'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Please check if you wish to highlight this \'special\' article across the site.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_highlight',
+    'label' => 'Highlighted Article',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-article-field_image'.
   $field_instances['node-article-field_image'] = array(
     'bundle' => 'article',
@@ -130,7 +181,7 @@ function ddc_article_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'large',
+          'image_style' => 'full',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -140,7 +191,7 @@ function ddc_article_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'large',
+          'image_style' => 'teaser',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -196,8 +247,10 @@ function ddc_article_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'settings' => array(
+          'trim_length' => 100,
+        ),
+        'type' => 'text_trimmed',
         'weight' => 1,
       ),
     ),
@@ -269,7 +322,9 @@ function ddc_article_field_default_field_instances() {
   t('Author');
   t('Body');
   t('Enter a comma-separated list of words to describe your content.');
+  t('Highlighted Article');
   t('Image');
+  t('Please check if you wish to highlight this \'special\' article across the site.');
   t('Please enter a subtitle to display for this Article.');
   t('Subtitle');
   t('Tags');

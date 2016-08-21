@@ -21,6 +21,19 @@ function ddc_article_permission() {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ddc_article_form_article_node_form_alter(&$form, &$form_state, $form_id) {
+  // Hide the general availability date field if the highlighted box is not checked.
+  $form['field_available_date']['#states'] = array(
+    // Only show the field when the Highlighted field is checked.
+    'visible' => array(
+      ':input[name="field_highlight"]' => array('checked' => TRUE),
+    ),
+  );
+}
+
+/**
  * Implements hook_node_view().
  */
 function ddc_article_node_view($node, $view_mode, $langcode) {

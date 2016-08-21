@@ -66,7 +66,7 @@ function ddc_article_field_default_field_instances() {
     'bundle' => 'article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please choose the applicable Author for this Article, or <a href="/admin/structure/entity-type/author/author/add">add another Author</a>.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',

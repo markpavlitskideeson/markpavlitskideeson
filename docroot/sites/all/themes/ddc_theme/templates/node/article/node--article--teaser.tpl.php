@@ -11,6 +11,7 @@
       <div class="media">
         <div class="pull-left">
           <?php print render($content['field_image']); ?>
+          <?php print render($content['publication_date']); ?>
         </div>
         <div class="media-body">
           <h1><?php print $linked_title; ?></h1>

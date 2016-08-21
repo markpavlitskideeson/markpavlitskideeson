@@ -4,6 +4,8 @@
  * Node template functions.
  */
 
+use \Drupal\ddc_article\EntityWrapper\Node\ArticleWrapper;
+
 /**
  * Implements hook_preprocess_node().
  */
@@ -22,6 +24,13 @@ function ddc_theme_preprocess_node(&$variables) {
     if (function_exists($function_name)) {
       $function_name($variables);
     }
+  }
+}
+
+function ddc_theme_preprocess_node__article(&$variables) {
+  $wrapper = new ArticleWrapper($variables['node']);
+  if ($wrapper->isHighlighted()) {
+    $variables['classes_array'][] = 'article-highlighted';
   }
 }
 

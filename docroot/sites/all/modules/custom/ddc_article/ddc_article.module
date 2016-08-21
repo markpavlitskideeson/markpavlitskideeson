@@ -42,7 +42,9 @@ function ddc_article_node_view($node, $view_mode, $langcode) {
     // with a signup call-to-action.
     $signup = l(t('Sign up now'), 'user/register', array(
       'query' => drupal_get_destination(),
-      'class' => array('button', 'button-cta'),
+      'attributes' => array(
+        'class' => array('btn', 'btn-primary'),
+      ),
     ));
     $node->content['body'] = array(
       '#type' => 'markup',

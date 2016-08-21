@@ -12,6 +12,7 @@
       </div>
       <div class="media-body">
         <h1><?php print $title; ?></h1>
+        <h2><?php print render($content['field_subtitle']); ?></h2>
         <?php print render($content['body']); ?>
       </div>
     </div>

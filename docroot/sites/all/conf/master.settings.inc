@@ -38,9 +38,16 @@ $conf['master_modules'] = array(
     'strongarm',
     'features',
     'fe_block',
+    'ds',
+    'eck',
+    'entityreference',
+    'inline_entity_form',
+    'entity',
+    'xautoload',
 
     //Features
     'ddc_article',
+    'ddc_author',
     'ddc_block',
     'ddc_common',
     'ddc_filter',

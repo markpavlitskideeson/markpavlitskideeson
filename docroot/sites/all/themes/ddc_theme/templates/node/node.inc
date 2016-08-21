@@ -12,13 +12,6 @@ use \Drupal\ddc_article\EntityWrapper\Node\ArticleWrapper;
 function ddc_theme_preprocess_node(&$variables) {
   $node_type = $variables['node']->type;
 
-  if ($node_type == 'article') {
-    $wrapper = new ArticleWrapper($variables['node']);
-    if ($wrapper->isHighlighted()) {
-      $variables['classes_array'][] = 'article-highlighted';
-    }
-  }
-
   // We want to theme nodes by type and display mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $node_type . '__' . $variables['view_mode'];
 
@@ -31,6 +24,13 @@ function ddc_theme_preprocess_node(&$variables) {
     if (function_exists($function_name)) {
       $function_name($variables);
     }
+  }
+}
+
+function ddc_theme_preprocess_node__article(&$variables) {
+  $wrapper = new ArticleWrapper($variables['node']);
+  if ($wrapper->isHighlighted()) {
+    $variables['classes_array'][] = 'article-highlighted';
   }
 }
 

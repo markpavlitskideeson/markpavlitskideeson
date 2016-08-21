@@ -32,6 +32,12 @@ function ddc_theme_preprocess_node__article(&$variables) {
   if ($wrapper->isHighlighted()) {
     $variables['classes_array'][] = 'article-highlighted';
   }
+
+  $published = format_date($variables['node']->changed, 'date_only');
+  $variables['content']['publication_date'] = array(
+    '#type' => 'markup',
+    '#markup' => $published,
+  );
 }
 
 function ddc_theme_preprocess_node__article__teaser(&$variables) {

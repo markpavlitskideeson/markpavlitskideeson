@@ -12,6 +12,12 @@ article {
   }
 }
 
+/* Set a background for highlighted Articles */
 .article-highlighted {
   background-color: #FF9;
+}
+
+/* Push the Views pager down onto it's own line */
+.view ul.pagination {
+  clear: both;
 }

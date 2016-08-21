@@ -71,5 +71,7 @@ function ddc_article_node_view($node, $view_mode, $langcode) {
         '!signup' => $signup,
       )),
     );
+    // Hide the author information.
+    $node->content['field_author']['#access'] = FALSE;
   }
 }

@@ -35,4 +35,20 @@ class ArticleWrapper extends EntityDrupalWrapper
   public function isHighlighted() {
     return (bool) $this->field_highlight->raw();
   }
+
+  /**
+   * Check if this content should only be available to members.
+   *
+   * @return boolean
+   *   TRUE if the Article is for members only.
+   */
+  public function isMembersOnly() {
+    // Articles can only be for members-only if they are highlighted.
+    if (!$this->isHighlighted()) {
+      // This is not a highlighted article, so it can't be for members-only.
+      return FALSE;
+    }
+
+    $available = $this->field_available_date->value();
+  }
 }

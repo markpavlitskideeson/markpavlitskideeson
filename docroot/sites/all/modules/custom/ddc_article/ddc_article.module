@@ -5,3 +5,48 @@
  */
 
 include_once 'ddc_article.features.inc';
+
+/**
+ * Implements hook_permission().
+ */
+function ddc_article_permission() {
+  return array(
+    'access members articles' => array(
+      'title' => t('Access members-only Articles'),
+      'description' => t('Access Articles which are reserved for members-only.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function ddc_article_node_view($node, $view_mode, $langcode) {
+  // We're only working with Articles.
+  if ($node->type != 'article') {
+    return;
+  }
+
+  // Don't restrict users who have the 'access members articles' permission.
+  if (user_access('access members articles')) {
+    return;
+  }
+
+  // Wrap the node.
+  $wrapper = new ArticleWrapper($node);
+  // Check if the node should be for members-only.
+  if ($wrapper->isMembersOnly()) {
+    // It is, and we don't have the permission, so replace the body content
+    // with a signup call-to-action.
+    $signup = l(t('Sign up now'), 'user/register', array(
+      'query' => drupal_get_destination(),
+      'class' => array('button', 'button-cta'),
+    ));
+    $node->content['body'] = array(
+      '#type' => 'markup',
+      '#markup' => t('This content is only available to members. !signup', array(
+        '!signup' => $signup,
+      )),
+    );
+  }
+}

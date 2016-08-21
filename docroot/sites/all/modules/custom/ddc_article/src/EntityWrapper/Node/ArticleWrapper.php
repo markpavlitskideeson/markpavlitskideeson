@@ -33,6 +33,6 @@ class ArticleWrapper extends EntityDrupalWrapper
    *   TRUE if the Article is set to be highlighted; FALSE otherwise.
    */
   public function isHighlighted() {
-    return (bool) $this->field_highlighted->raw();
+    return (bool) $this->field_highlight->raw();
   }
 }

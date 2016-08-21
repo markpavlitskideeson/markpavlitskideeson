@@ -25,10 +25,16 @@ function ddc_article_permission() {
  */
 function ddc_article_form_article_node_form_alter(&$form, &$form_state, $form_id) {
   // Hide the general availability date field if the highlighted box is not checked.
+
+  // Find the language code for the field to check (highlighted checkbox).
+  $lang = $form['field_highlight']['#language'];
+  $field_name = 'field_highlight[' . $lang . ']';
+
+  // Set a state on the available date field.
   $form['field_available_date']['#states'] = array(
     // Only show the field when the Highlighted field is checked.
     'visible' => array(
-      ':input[name="field_highlight"]' => array('checked' => TRUE),
+      ':input[name="' . $field_name . '"]' => array('checked' => TRUE),
     ),
   );
 }

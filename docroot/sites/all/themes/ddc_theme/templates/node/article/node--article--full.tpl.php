@@ -15,6 +15,9 @@
         <h2><?php print render($content['field_subtitle']); ?></h2>
         <?php print render($content['body']); ?>
       </div>
+      <div class="media-footer">
+        <?php print render($content['field_author']); ?>
+      </div>
     </div>
   </article>
 </div>
